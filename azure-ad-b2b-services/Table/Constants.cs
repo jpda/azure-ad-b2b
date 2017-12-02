@@ -1,4 +1,4 @@
-﻿namespace azure_ad_b2b_entities
+﻿namespace azure_ad_b2b_services
 {
     public static class Constants
     {

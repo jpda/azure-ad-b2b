@@ -1,16 +1,16 @@
 ﻿using Microsoft.Extensions.Options;
 using Microsoft.Graph;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using System;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using azure_ad_b2b_shared;
 
 namespace azure_ad_b2b_services
 {
     public class GraphService : IGraphService
     {
-        GraphConfiguration _config;
-        public GraphService(IOptions<GraphConfiguration> config)
+        private readonly GraphOptions _config;
+        public GraphService(IOptions<GraphOptions> config)
         {
             _config = config.Value;
         }

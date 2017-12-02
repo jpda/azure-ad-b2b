@@ -4,22 +4,23 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using azure_ad_b2b_shared;
 using System.Collections.Generic;
+using Microsoft.Extensions.Options;
 
-namespace azure_ad_b2b_entities
+namespace azure_ad_b2b_services
 {
     public class AuthTableContext : TableContext, IAuthTableContext
     {
-        public AuthTableContext(string connectionString) : base(connectionString, Constants.AuthTableName) { }
+        public AuthTableContext(IOptions<StorageOptions> storageOptions) : base(storageOptions, Constants.AuthTableName) { }
     }
 
     public class UserTableContext : TableContext, IUserTableContext
     {
-        public UserTableContext(string connectionString) : base(connectionString, Constants.UserTableName) { }
+        public UserTableContext(IOptions<StorageOptions> storageOptions) : base(storageOptions, Constants.UserTableName) { }
     }
 
     public class TenantTableContext : TableContext, ITenantTableContext
     {
-        public TenantTableContext(string connectionString) : base(connectionString, Constants.TenantTableName) { }
+        public TenantTableContext(IOptions<StorageOptions> storageOptions) : base(storageOptions, Constants.TenantTableName) { }
     }
 
     public interface ITenantTableContext : ITableContext { }
@@ -31,9 +32,9 @@ namespace azure_ad_b2b_entities
         private readonly CloudTableClient _ctc;
         private readonly CloudTable _table;
 
-        public TableContext(string connectionString, string tableName)
+        public TableContext(IOptions<StorageOptions> storageOptions, string tableName)
         {
-            var a = CloudStorageAccount.Parse(connectionString);
+            var a = CloudStorageAccount.Parse(storageOptions.Value.ConnectionString);
             _ctc = a.CreateCloudTableClient();
             _table = GetTableByName(tableName).Result; //sync, blocking
         }

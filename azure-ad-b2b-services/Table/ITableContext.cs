@@ -4,7 +4,7 @@ using Microsoft.WindowsAzure.Storage.Table;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace azure_ad_b2b_entities
+namespace azure_ad_b2b_services
 {
     public interface ITableContext
     {

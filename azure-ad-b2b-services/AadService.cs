@@ -6,7 +6,7 @@ using azure_ad_b2b_services;
 using azure_ad_b2b_services.AadTenantRepo;
 using azure_ad_b2b_entities.AadTenant;
 
-namespace azure_ad_b2b_service
+namespace azure_ad_b2b_services
 {
     public class AadService : IAadService
     {

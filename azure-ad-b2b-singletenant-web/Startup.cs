@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
@@ -11,8 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using azure_ad_b2b_services;
 using azure_ad_b2b_services.AppTenantRepo;
-using azure_ad_b2b_entities;
-using Microsoft.Extensions.Options;
+using azure_ad_b2b_shared;
 
 namespace azure_ad_b2b_singletenant_web
 {
@@ -38,12 +33,12 @@ namespace azure_ad_b2b_singletenant_web
 
             services.AddOptions();
             services.Configure<StorageOptions>(x => Configuration.Bind("Storage", x));
-            services.Configure<GraphConfiguration>(x => Configuration.Bind("Graph", x));
+            services.Configure<GraphOptions>(x => Configuration.Bind("Graph", x));
 
             services.AddTransient<IGraphService, GraphService>();
-            services.AddTransient<IUserTableContext, UserTableContext>(x => new UserTableContext("UseDevelopmentStorage=true;"));
-            services.AddTransient<ITenantTableContext, TenantTableContext>(x => new TenantTableContext("UseDevelopmentStorage=true;"));
-            services.AddTransient<IAuthTableContext, AuthTableContext>(x => new AuthTableContext("UseDevelopmentStorage=true;"));
+            services.AddTransient<IUserTableContext, UserTableContext>();
+            services.AddTransient<ITenantTableContext, TenantTableContext>();
+            services.AddTransient<IAuthTableContext, AuthTableContext>();
             services.AddTransient<IAppRepository, AppRepository>();
             services.AddTransient<IAppService, AppService>();
 

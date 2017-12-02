@@ -7,10 +7,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Graph" Version="1.6.2" />
     <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="3.17.2" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\azure-ad-b2b-entities\azure-ad-b2b-entities.csproj" />
+    <ProjectReference Include="..\azure-ad-b2b-shared\azure-ad-b2b-shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,4 +21,7 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Table\" />
+  </ItemGroup>
 </Project>
