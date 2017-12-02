@@ -1,0 +1,55 @@
+﻿@model azure_ad_b2b_services.AppTenantRepo.AppTenant
+@{
+    ViewData["Title"] = "Create";
+}
+<h2>Create</h2>
+<h4>AppTenant</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TenantId" class="control-label"></label>
+                <input asp-for="TenantId" class="form-control" />
+                <span asp-validation-for="TenantId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdminEmail" class="control-label"></label>
+                <input asp-for="AdminEmail" class="form-control" />
+                <span asp-validation-for="AdminEmail" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                    <label asp-for="DateAdded" class="control-label"></label>
+                    <input asp-for="DateAdded" class="form-control" />
+                    <span asp-validation-for="DateAdded" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="InviteSent" /> @Html.DisplayNameFor(model => model.InviteSent)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="InvitedBy" class="control-label"></label>
+                    <input asp-for="InvitedBy" class="form-control" />
+                    <span asp-validation-for="InvitedBy" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
