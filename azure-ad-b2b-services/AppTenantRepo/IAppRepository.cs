@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using azure_ad_b2b_entities;
+﻿using System.Threading.Tasks;
 using azure_ad_b2b_shared;
 using azure_ad_b2b_entities.AppTenant;
 using System.Collections.Generic;
@@ -16,5 +14,6 @@ namespace azure_ad_b2b_services.AppTenantRepo
         Task<ServiceResult<AppUserEntity>> AddUserAsync(AppUserEntity t);
         Task<ServiceResult<AppUserEntity>> UpdateUserAsync(AppUserEntity t);
         Task<ServiceResult<IList<AppTenantEntity>>> GetAllTenantsAsync();
+        Task<ServiceResult<IList<AppUserEntity>>> GetUsersByTenantIdAsync(string tenantId);
     }
 }

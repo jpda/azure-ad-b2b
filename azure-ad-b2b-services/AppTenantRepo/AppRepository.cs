@@ -59,5 +59,10 @@ namespace azure_ad_b2b_services.AppTenantRepo
         {
             return await _userCtx.SaveOrMergeEntityAsync(t);
         }
+
+        public async Task<ServiceResult<IList<AppUserEntity>>> GetUsersByTenantIdAsync(string tenantId)
+        {
+            return await _userCtx.RetrievePartitionAsync<AppUserEntity>(tenantId);
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace azure_ad_b2b_services.AadTenantRepo
         Task<ServiceResult<AadTenantEntity>> GetTenantByIdAsync(string tenantId);
         Task<ServiceResult<AadTenantEntity>> AddTenantAsync(AadTenantEntity t);
         Task<ServiceResult<AadTenantEntity>> UpdateTenantAsync(AadTenantEntity t);
-        Task<ServiceResult<AadTenantEntity>> AddUserAsync(AadUserEntity t);
+        Task<ServiceResult<AadUserEntity>> AddUserAsync(AadUserEntity t);
         Task<ServiceResult<AadUserEntity>> UpdateUserAsync(AadUserEntity t);
     }
 }

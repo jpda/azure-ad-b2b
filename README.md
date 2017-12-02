@@ -6,4 +6,4 @@ Simple app for inviting users via Azure AD B2B, who can then invite their own te
 - Expects an 'normal' Azure AD tenant - e.g., not B2C
 - Requires the 'Allow inviting guest users' scope from the Microsoft Graph, _and_ admin consent
 
-## Walkthrough later
+## Walkthrough laters

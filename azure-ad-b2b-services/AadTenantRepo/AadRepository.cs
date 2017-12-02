@@ -40,14 +40,14 @@ namespace azure_ad_b2b_services.AadTenantRepo
             return await _ctx.SaveOrMergeEntityAsync(t);
         }
 
-        public async Task<ServiceResult<AadTenantEntity>> AddUserAsync(AadUserEntity t)
+        public async Task<ServiceResult<AadUserEntity>> AddUserAsync(AadUserEntity t)
         {
-            throw new NotImplementedException();
+            return await _ctx.SaveOrMergeEntityAsync(t);
         }
 
         public async Task<ServiceResult<AadUserEntity>> UpdateUserAsync(AadUserEntity t)
         {
-            throw new NotImplementedException();
+            return await _ctx.SaveOrMergeEntityAsync(t);
         }
     }
 }

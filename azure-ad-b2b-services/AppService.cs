@@ -35,14 +35,10 @@ namespace azure_ad_b2b_services
             return result.Success ? result.Value.Select(x => new AppTenant(x)).ToList() : new List<AppTenant>();
         }
 
-        public async Task<List<AppUser>> GetAllUsersAsync()
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<List<AppUser>> GetAllUsersByTenantAsync(string tenantId)
         {
-            throw new NotImplementedException();
+            var result = await _repo.GetUsersByTenantIdAsync(tenantId);
+            return result.Success ? result.Value.Select(x => new AppUser(x)).ToList() : new List<AppUser>();
         }
 
         public async Task<AppTenant> AddTenantAsync(AppTenant t)

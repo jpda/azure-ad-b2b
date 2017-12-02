@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using azure_ad_b2b_entities;
-using azure_ad_b2b_services;
 using azure_ad_b2b_services.AadTenantRepo;
 using azure_ad_b2b_entities.AadTenant;
 
@@ -28,17 +26,17 @@ namespace azure_ad_b2b_services
             return result.Success ? new AadUser(result.Value) : null;
         }
 
-        public async Task<List<AadTenant>> GetAllTenantsAsync()
+        public Task<List<AadTenant>> GetAllTenantsAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<AadUser>> GetAllUsersAsync()
+        public Task<List<AadUser>> GetAllUsersAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<AadUser>> GetAllUsersByTenantAsync(string tenantId)
+        public Task<List<AadUser>> GetAllUsersByTenantAsync(string tenantId)
         {
             throw new NotImplementedException();
         }
