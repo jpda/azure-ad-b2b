@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "azure-ad-b2b-singletenant-web", "azure-ad-b2b-singletenant-web\azure-ad-b2b-singletenant-web.csproj", "{48247B0F-42D4-420C-B5E3-485F0B893A36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "azure-ad-b2b-entities", "azure-ad-b2b-entities\azure-ad-b2b-entities.csproj", "{1994A44F-E1D5-49B4-A791-498BE91573AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "azure-ad-b2b-services", "azure-ad-b2b-services\azure-ad-b2b-services.csproj", "{9EA22FC0-0EF6-43A6-9716-A97605FC4953}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "azure-ad-b2b-shared", "azure-ad-b2b-shared\azure-ad-b2b-shared.csproj", "{95716739-1AC5-4E86-8CC4-571D82462F62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{48247B0F-42D4-420C-B5E3-485F0B893A36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48247B0F-42D4-420C-B5E3-485F0B893A36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48247B0F-42D4-420C-B5E3-485F0B893A36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1994A44F-E1D5-49B4-A791-498BE91573AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1994A44F-E1D5-49B4-A791-498BE91573AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1994A44F-E1D5-49B4-A791-498BE91573AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1994A44F-E1D5-49B4-A791-498BE91573AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EA22FC0-0EF6-43A6-9716-A97605FC4953}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA22FC0-0EF6-43A6-9716-A97605FC4953}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA22FC0-0EF6-43A6-9716-A97605FC4953}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA22FC0-0EF6-43A6-9716-A97605FC4953}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95716739-1AC5-4E86-8CC4-571D82462F62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95716739-1AC5-4E86-8CC4-571D82462F62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95716739-1AC5-4E86-8CC4-571D82462F62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95716739-1AC5-4E86-8CC4-571D82462F62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

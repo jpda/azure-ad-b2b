@@ -9,6 +9,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using azure_ad_b2b_services;
+using azure_ad_b2b_services.AppTenantRepo;
+using azure_ad_b2b_entities;
+using Microsoft.Extensions.Options;
 
 namespace azure_ad_b2b_singletenant_web
 {
@@ -31,6 +35,17 @@ namespace azure_ad_b2b_singletenant_web
             })
             .AddAzureAd(options => Configuration.Bind("AzureAd", options))
             .AddCookie();
+
+            services.AddOptions();
+            services.Configure<StorageOptions>(x => Configuration.Bind("Storage", x));
+            services.Configure<GraphConfiguration>(x => Configuration.Bind("Graph", x));
+
+            services.AddTransient<IGraphService, GraphService>();
+            services.AddTransient<IUserTableContext, UserTableContext>(x => new UserTableContext("UseDevelopmentStorage=true;"));
+            services.AddTransient<ITenantTableContext, TenantTableContext>(x => new TenantTableContext("UseDevelopmentStorage=true;"));
+            services.AddTransient<IAuthTableContext, AuthTableContext>(x => new AuthTableContext("UseDevelopmentStorage=true;"));
+            services.AddTransient<IAppRepository, AppRepository>();
+            services.AddTransient<IAppService, AppService>();
 
             services.AddMvc();
         }

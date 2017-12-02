@@ -1,4 +1,4 @@
-﻿namespace Microsoft.AspNetCore.Authentication
+﻿namespace azure_ad_b2b_shared
 {
     public class AzureAdOptions
     {
