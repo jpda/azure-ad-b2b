@@ -11,6 +11,7 @@ namespace azure_ad_b2b_services.AppTenantRepo
         public DateTime DateAdded { get; set; }
         public bool InviteSent { get; set; }
         public string InvitedBy { get; set; }
+        public string InviteRedeemUrl { get; set; }
 
         public AppTenant(AppTenantEntity e)
         {
@@ -20,6 +21,7 @@ namespace azure_ad_b2b_services.AppTenantRepo
             DateAdded = e.DateAdded;
             InviteSent = e.InviteSent;
             InvitedBy = e.InvitedBy;
+            InviteRedeemUrl = e.InviteRedeemUrl;
         }
 
         public AppTenant()

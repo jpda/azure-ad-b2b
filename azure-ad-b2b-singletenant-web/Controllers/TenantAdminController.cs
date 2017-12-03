@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using azure_ad_b2b_services;
 using azure_ad_b2b_services.AppTenantRepo;
 using Microsoft.AspNetCore.Authorization;
+using azure_ad_b2b_services;
 
 namespace azure_ad_b2b_singletenant_web.Controllers
 {
-    [Authorize(Roles="TenantAdmin")]
-    public class TenantAdminController : Controller
+    [Authorize(Roles = "TenantAdmin")]
+    public class TenantAdminController : AuthenticatedTenantController
     {
-        private IAppService _appService;
-        public TenantAdminController(IAppService appService)
-        {
-            _appService = appService;
-        }
+        public TenantAdminController(IAppService appService) : base(appService) { }
 
         public IActionResult Index()
         {
@@ -40,7 +36,9 @@ namespace azure_ad_b2b_singletenant_web.Controllers
             tenant.InvitedBy = HttpContext.User.Identity.Name;
             tenant.InviteSent = false;
             var t = await _appService.AddTenantAsync(tenant);
-            return View();
+            return RedirectToAction("Index");
         }
     }
+
+
 }

@@ -11,6 +11,7 @@ namespace azure_ad_b2b_entities.AppTenant
         public DateTime DateAdded { get; set; }
         public bool InviteSent { get; set; }
         public string InvitedBy { get; set; }
+        public string InviteRedeemUrl { get; set; }
 
         public AppTenantEntity() { }
         public AppTenantEntity(string tenantId) : base()
@@ -18,7 +19,7 @@ namespace azure_ad_b2b_entities.AppTenant
             TenantId = tenantId;
             RowKey = tenantId;
         }
-        public AppTenantEntity(string tenantId, string name, string admin, string inviter) : this(tenantId)
+        public AppTenantEntity(string tenantId, string name, string admin, string inviter, string inviteRedeemUrl) : this(tenantId)
         {
             TenantId = tenantId;
             Name = name;
@@ -26,6 +27,7 @@ namespace azure_ad_b2b_entities.AppTenant
             DateAdded = DateTime.UtcNow;
             InviteSent = true;
             InvitedBy = inviter;
+            InviteRedeemUrl = inviteRedeemUrl;
         }
     }
 

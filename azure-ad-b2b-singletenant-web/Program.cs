@@ -20,6 +20,7 @@ namespace azure_ad_b2b_singletenant_web
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .UseApplicationInsights()
                 .Build();
     }
 }

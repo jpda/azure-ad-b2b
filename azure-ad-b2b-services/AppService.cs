@@ -43,7 +43,7 @@ namespace azure_ad_b2b_services
 
         public async Task<AppTenant> AddTenantAsync(AppTenant t)
         {
-            var result = await _repo.AddTenantAsync(new AppTenantEntity(t.TenantId, t.Name, t.AdminEmail, t.InvitedBy));
+            var result = await _repo.AddTenantAsync(new AppTenantEntity(t.TenantId, t.Name, t.AdminEmail, t.InvitedBy, string.Empty));
             var user = new AppUser()
             {
                 AddedBy = t.InvitedBy,
@@ -51,14 +51,23 @@ namespace azure_ad_b2b_services
                 TenantId = t.TenantId,
                 Email = t.AdminEmail,
             };
-            await AddUserAsync(user, true);
+            var u = await AddUserAsync(user, true);
+            result.Value.InviteRedeemUrl = u.InviteRedeemUrl;
+            await UpdateTenantEntityAsync(result.Value);
             return t;
         }
 
         public async Task<AppTenant> UpdateTenantAsync(AppTenant t)
         {
-            await _repo.UpdateTenantAsync(new AppTenantEntity(t.TenantId, t.Name, t.AdminEmail, ""));
+            var e = new AppTenantEntity(t.TenantId, t.Name, t.AdminEmail, t.InvitedBy, t.InviteRedeemUrl);
+            var thing = await UpdateTenantEntityAsync(e);
             return t;
+        }
+
+        private async Task<AppTenant> UpdateTenantEntityAsync(AppTenantEntity t)
+        {
+            var thing = await _repo.UpdateTenantAsync(t);
+            return thing.Success ? new AppTenant(thing.Value) : new AppTenant(t);
         }
 
         public async Task<AppUser> AddUserAsync(AppUser u, bool invite = false)

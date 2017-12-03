@@ -6,6 +6,7 @@ namespace azure_ad_b2b_entities.AppTenant
     public class AppUserEntity : TableEntity
     {
         public string TenantId { get; set; }
+        public string ResolvedTenantId { get; set; }
         public string Upn { get; set; }
         public string NameIdentifier { get; set; }
         public string AddedBy { get; set; }

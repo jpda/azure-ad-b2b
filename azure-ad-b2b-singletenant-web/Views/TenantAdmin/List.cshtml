@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<azure_ad_b2b_services.AppTenantRepo.AppTenant>
 @{
-    ViewData["Title"] = "List";
+    ViewData["Title"] = "Tenants";
 }
 <h2>List</h2>
 <p>
@@ -33,7 +33,7 @@ else
                 <th>
                     @Html.DisplayNameFor(model => model.InvitedBy)
                 </th>
-                <th></th>
+                <th>@Html.DisplayNameFor(model => model.InviteRedeemUrl)</th>
             </tr>
         </thead>
         <tbody>
@@ -59,9 +59,7 @@ else
                         @Html.DisplayFor(modelItem => item.InvitedBy)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        @Html.DisplayFor(modelItem => item.InviteRedeemUrl)
                     </td>
                 </tr>
             }
