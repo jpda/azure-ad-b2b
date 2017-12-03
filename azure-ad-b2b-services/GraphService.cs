@@ -7,7 +7,6 @@ using azure_ad_b2b_shared;
 using AAD = Microsoft.Azure.ActiveDirectory.GraphClient;
 using System;
 using System.Linq;
-using System.Diagnostics.Contracts;
 
 namespace azure_ad_b2b_services
 {
