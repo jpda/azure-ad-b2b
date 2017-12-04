@@ -102,6 +102,8 @@ namespace azure_ad_b2b_services
             user.Value.InvitedUserId = inviteResult.InvitedUserId;
             await _repo.UpdateUserAsync(user.Value);
             u.InviteRedeemUrl = user.Value.InviteRedeemUrl;
+            // todo: figure out why this is happening
+            await Task.Delay(5000);
             await _graph.AddUserToRole(inviteResult.InvitedUserId, isCustomerAdmin);
 
             return user.Success ? new AppUser(user.Value) : u;
