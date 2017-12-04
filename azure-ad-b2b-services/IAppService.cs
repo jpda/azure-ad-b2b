@@ -12,7 +12,8 @@ namespace azure_ad_b2b_services
         Task<List<AppUser>> GetAllUsersByTenantAsync(string tenantId);
         Task<AppTenant> AddTenantAsync(AppTenant t);
         Task<AppTenant> UpdateTenantAsync(AppTenant t);
-        Task<AppUser> AddUserAsync(AppUser t, bool invite = false, bool isCustomerAdmin = false);
+        Task<AppUser> AddUserAsync(AppUser t, bool invite = false, bool isCustomerAdmin = false, bool validateDomain = false);
         Task<AppUser> UpdateUserAsync(AppUser t);
+        bool ValidateTenantAgainstDomain(string domain, string tenantId);
     }
 }

@@ -20,6 +20,7 @@
     <ProjectReference Include="..\azure-ad-b2b-shared\azure-ad-b2b-shared.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\UserAdmin\" />
   </ItemGroup>
 </Project>

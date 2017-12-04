@@ -36,7 +36,7 @@ namespace azure_ad_b2b_singletenant_web.Controllers
             u.AddedBy = User.Identity.Name;
             u.TenantId = MyIssuer;
             u.DateAdded = DateTime.UtcNow;
-            var user = await _appService.AddUserAsync(u, true);
+            var user = await _appService.AddUserAsync(u, true, false, true);
             return RedirectToAction("Index");
         }
     }

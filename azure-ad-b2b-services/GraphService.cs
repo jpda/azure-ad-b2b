@@ -87,6 +87,7 @@ namespace azure_ad_b2b_services
 
         // see: https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/approleassignment_update for Microsoft Graph reference
         // this uses the AAD Graph since it appears to be the only place it is implemented currently (12/2017)
+        // todo: this sucks, the object model for graph v1 is a joke and graph v2 doesn't work
         public async Task<bool> AddUserToRole2(string userIdentifier)
         {
             var appRef = _aadClient.Applications.GetByObjectId(_config.AppObjectId);
