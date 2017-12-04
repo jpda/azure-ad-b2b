@@ -70,16 +70,30 @@ namespace azure_ad_b2b_services
             return thing.Success ? new AppTenant(thing.Value) : new AppTenant(t);
         }
 
-        public async Task<AppUser> AddUserAsync(AppUser u, bool invite = false)
+        public async Task<AppUser> AddUserAsync(AppUser u, bool invite = false, bool isCustomerAdmin = false)
         {
-            var user = await _repo.AddUserAsync(new AppUserEntity(u.TenantId, u.Email) { DisplayName = u.DisplayName, AddedBy = u.AddedBy, DateAdded = u.DateAdded, NameIdentifier = u.NameIdentifier, InviteRedeemUrl = u.InviteRedeemUrl, Upn = u.Upn });
-            if (invite)
+            var user = await _repo.AddUserAsync(new AppUserEntity(u.TenantId, u.Email)
             {
-                var inviteResult = await _graph.InviteUser(u.Email, invite, u.DisplayName);
-                user.Value.InviteRedeemUrl = inviteResult;
-                await _repo.UpdateUserAsync(user.Value);
-                u.InviteRedeemUrl = user.Value.InviteRedeemUrl;
+                DisplayName = u.DisplayName,
+                AddedBy = u.AddedBy,
+                DateAdded = u.DateAdded,
+                NameIdentifier = u.NameIdentifier,
+                InviteRedeemUrl = u.InviteRedeemUrl,
+                InvitedUserId = u.InvitedUserId,
+                Upn = u.Upn
+            });
+
+            var inviteResult = await _graph.InviteUser(u.Email, invite, u.DisplayName);
+            user.Value.InviteRedeemUrl = inviteResult.InvitedUserInviteRedeemUrl;
+            user.Value.InvitedUserId = inviteResult.InvitedUserId;
+            await _repo.UpdateUserAsync(user.Value);
+            u.InviteRedeemUrl = user.Value.InviteRedeemUrl;
+
+            if (isCustomerAdmin)
+            {
+                var addRole = await _graph.AddUserToRole(inviteResult.InvitedUserId);
             }
+
             return user.Success ? new AppUser(user.Value) : u;
         }
 

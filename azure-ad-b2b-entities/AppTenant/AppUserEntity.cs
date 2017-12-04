@@ -14,6 +14,7 @@ namespace azure_ad_b2b_entities.AppTenant
         public string InviteRedeemUrl { get; set; }
         public string DisplayName { get; set; }
         public string Email { get; set; }
+        public object InvitedUserId { get; set; }
 
         public AppUserEntity(string tenantId, string email) : this()
         {

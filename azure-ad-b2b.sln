@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stuff", "Stuff", "{A41EDEA8
 		LICENSE = LICENSE
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "azure-ad-b2b-tests", "azure-ad-b2b-tests\azure-ad-b2b-tests.csproj", "{66B45EB1-FAC7-415A-AA89-67ADCC048E9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{95716739-1AC5-4E86-8CC4-571D82462F62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95716739-1AC5-4E86-8CC4-571D82462F62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95716739-1AC5-4E86-8CC4-571D82462F62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66B45EB1-FAC7-415A-AA89-67ADCC048E9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66B45EB1-FAC7-415A-AA89-67ADCC048E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66B45EB1-FAC7-415A-AA89-67ADCC048E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66B45EB1-FAC7-415A-AA89-67ADCC048E9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,6 +15,7 @@ namespace azure_ad_b2b_services.AppTenantRepo
         public string InviteRedeemUrl { get; set; }
         public string DisplayName { get; set; }
         public string Email { get; set; }
+        public object InvitedUserId { get; internal set; }
 
         public AppUser(AppUserEntity dataEntity)
         {
