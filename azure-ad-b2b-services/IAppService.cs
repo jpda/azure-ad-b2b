@@ -12,7 +12,7 @@ namespace azure_ad_b2b_services
         Task<List<AppUser>> GetAllUsersByTenantAsync(string tenantId);
         Task<AppTenant> AddTenantAsync(AppTenant t);
         Task<AppTenant> UpdateTenantAsync(AppTenant t);
-        Task<AppUser> AddUserAsync(AppUser t, bool invite);
+        Task<AppUser> AddUserAsync(AppUser t, bool invite = false, bool isCustomerAdmin = false);
         Task<AppUser> UpdateUserAsync(AppUser t);
     }
 }

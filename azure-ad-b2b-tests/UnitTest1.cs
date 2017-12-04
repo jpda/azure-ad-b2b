@@ -40,7 +40,7 @@ namespace azure_ad_b2b_tests
         public async Task TestAddUserToRole()
         {
             var userID = "c06f897b-c591-4df3-8e2f-c4c75e03461b";
-            await _graphService.AddUserToRole(userID);
+            await _graphService.AddUserToRole(userID, true);
         }
     }
 }

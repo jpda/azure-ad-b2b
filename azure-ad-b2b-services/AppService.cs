@@ -51,7 +51,7 @@ namespace azure_ad_b2b_services
                 TenantId = t.TenantId,
                 Email = t.AdminEmail,
             };
-            var u = await AddUserAsync(user, true);
+            var u = await AddUserAsync(user, true, true);
             result.Value.InviteRedeemUrl = u.InviteRedeemUrl;
             await UpdateTenantEntityAsync(result.Value);
             return t;
@@ -70,7 +70,8 @@ namespace azure_ad_b2b_services
             return thing.Success ? new AppTenant(thing.Value) : new AppTenant(t);
         }
 
-        public async Task<AppUser> AddUserAsync(AppUser u, bool invite = false, bool isCustomerAdmin = false)
+        // todo: refactor this
+        public async Task<AppUser> AddUserAsync(AppUser u, bool emailInvite = false, bool isCustomerAdmin = false)
         {
             var user = await _repo.AddUserAsync(new AppUserEntity(u.TenantId, u.Email)
             {
@@ -88,15 +89,7 @@ namespace azure_ad_b2b_services
             user.Value.InvitedUserId = inviteResult.InvitedUserId;
             await _repo.UpdateUserAsync(user.Value);
             u.InviteRedeemUrl = user.Value.InviteRedeemUrl;
-
-            if (isCustomerAdmin)
-            {
-                await _graph.AddUserToRole(inviteResult.InvitedUserId);
-            }
-            else
-            {
-                await _graph.AddUserToRole(inviteResult.InvitedUserId);
-            }
+            await _graph.AddUserToRole(inviteResult.InvitedUserId, isCustomerAdmin);
 
             return user.Success ? new AppUser(user.Value) : u;
         }
