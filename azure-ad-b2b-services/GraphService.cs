@@ -69,10 +69,11 @@ namespace azure_ad_b2b_services
             var inviteResponse = await _client.Invitations.Request().AddAsync(invite);
             return new InviteUserGraphResponse() { InvitedUserId = inviteResponse.InvitedUser.Id, InvitedUserInviteRedeemUrl = inviteResponse.InviteRedeemUrl };
         }
-
-        public async Task<bool> AddUserToRole(string userId)
+        //todo: remove domain-specific stuff (E.g., customer admin)
+        public async Task<bool> AddUserToRole(string userId, bool isCustomerAdmin)
         {
-            var content = $@"{{'id': '{_config.CustomerAdminRoleId}', 'principalId': '{userId}','resourceId': '{_config.AppEnterpriseRegistrationResourceId}'}}";
+            var roleId = isCustomerAdmin ? _config.CustomerAdminRoleId : _config.CustomerUserRoleId;
+            var content = $@"{{'id': '{roleId}', 'principalId': '{userId}','resourceId': '{_config.AppEnterpriseRegistrationResourceId}'}}";
             var c = new HttpClient();
             //https://graph.windows.net/oneclickspy.onmicrosoft.com/users/c06f897b-c591-4df3-8e2f-c4c75e03461b/appRoleAssignments?api-version=1.6
             c.DefaultRequestHeaders.Clear();

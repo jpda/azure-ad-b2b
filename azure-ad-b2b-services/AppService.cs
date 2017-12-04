@@ -91,7 +91,11 @@ namespace azure_ad_b2b_services
 
             if (isCustomerAdmin)
             {
-                var addRole = await _graph.AddUserToRole(inviteResult.InvitedUserId);
+                await _graph.AddUserToRole(inviteResult.InvitedUserId);
+            }
+            else
+            {
+                await _graph.AddUserToRole(inviteResult.InvitedUserId);
             }
 
             return user.Success ? new AppUser(user.Value) : u;

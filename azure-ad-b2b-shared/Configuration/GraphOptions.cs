@@ -12,6 +12,7 @@
         public string InviteRedirectUrl { get; set; }
         public string AppObjectId { get; set; }
         public string CustomerAdminRoleId { get; set; }
+        public string CustomerUserRoleId { get; set; }
         public string AppEnterpriseRegistrationResourceId { get; set; }
     }
 }
